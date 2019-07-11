@@ -288,28 +288,16 @@
       "createdAt": 1543783744211
     },
     {
-      "id": "2",
       "name": "John Doe",
-      "email": "john.doe@gmail.com",
-      "phone_number": "380998910111",
-      "address": null,
-      "about_me": null,
+      "email": "john@gmail.com",
+      "phone_number": "0665325321",
+      "address": "Obolon",
+      "about_me": "dsadsadads",
       "country_id": "1",
-      "state_id": "16",
-      "city_id": "16",
-      "createdAt": 1543783745664
-    },
-    {
-      "id": "3",
-      "name": "Randolph Franklin",
-      "email": "randolph.franklin@gmail.com",
-      "phone_number": "380631213141",
-      "address": null,
-      "about_me": null,
-      "country_id": "1",
-      "state_id": "13",
-      "city_id": "13",
-      "createdAt": 1543783746465
+      "state_id": "10",
+      "city_id": "10",
+      "createdAt": 1562848514202,
+      "id": "oIuC6Kq"
     }
   ]
 }

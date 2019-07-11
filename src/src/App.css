@@ -1,11 +1,30 @@
-.form{
+.form {
   width: 500px;
 }
 
-.form textarea{
+.form textarea {
   width: 100%;
   max-width: 100%;
   min-width: 100%;
   min-height: 100px;
   max-height: 200px;
+}
+label {
+  margin-bottom: 0.2rem;
+}
+.form-group {
+  margin-bottom: 0.5rem;
+}
+.users {
+  margin: 10px;
+}
+div.user {
+  background-color: rgb(143, 142, 142);
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 5px 15px;
+  color: #fff;
+}
+.user p {
+  margin-bottom: 5px;
 }
