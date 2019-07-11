@@ -13,6 +13,9 @@
 small.danger {
   color: red;
 }
+small.success {
+  color: green;
+}
 .form textarea {
   width: 100%;
   max-width: 100%;

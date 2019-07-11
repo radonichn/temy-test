@@ -19,9 +19,10 @@ class Form extends Component {
     phoneValid: false,
     address: "",
     about_me: "",
-    aboutValid: false,
+    aboutValid: true,
     formValid: false,
-    fieldErrors: {}
+    fieldErrors: {},
+    requestSent: false
   };
   getUsers = async () => {
     const users = await fetch("http://localhost:3000/users").then(res =>
@@ -156,7 +157,7 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.validateForm()) {
-      const {
+      let {
         name,
         email,
         phone_number,
@@ -166,7 +167,8 @@ class Form extends Component {
         state_id,
         city_id
       } = this.state;
-      const createdAt = new Date().getTime();
+      address = address === "" ? null : address;
+      about_me = about_me === "" ? null : about_me;
       fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
@@ -181,11 +183,21 @@ class Form extends Component {
           about_me,
           country_id,
           state_id,
-          city_id,
-          createdAt
+          city_id
         })
       });
       this.getUsers();
+      this.setState({
+        requestSent: true,
+        name: "",
+        email: "",
+        phone_number: "",
+        country_id: null,
+        state_id: null,
+        city_id: null,
+        address: "",
+        about_me: ""
+      });
     } else {
       alert("An error occured!");
     }
@@ -196,6 +208,13 @@ class Form extends Component {
     this.queryByName("countries").then(countries =>
       this.setState({ countries })
     );
+  };
+  componentDidUpdate = () => {
+    if (this.state.requestSent) {
+      setTimeout(() => {
+        this.setState({ requestSent: false });
+      }, 1000);
+    }
   };
   render() {
     return (
@@ -363,6 +382,11 @@ class Form extends Component {
           >
             Submit
           </button>
+          {this.state.requestSent && (
+            <small className="form-text success">
+              Message was successfully sent
+            </small>
+          )}
         </form>
         <div className="users">
           {this.state.users.map(user => (
