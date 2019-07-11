@@ -26,10 +26,11 @@ class Form extends Component {
     successClass: "form-text hidden"
   };
   getUsers = async () => {
-    const users = await fetch("http://localhost:3000/users").then(res =>
-      res.json()
-    );
+    const users = await fetch(
+      "http://localhost:3000/users?_sort=createdAt&_order=desc"
+    ).then(res => res.json());
     this.setState({ users });
+    console.log("getUsers", users);
   };
   queryByName = async name => {
     return await fetch(`http://localhost:3000/${name}`).then(res => res.json());
@@ -138,15 +139,6 @@ class Form extends Component {
       city_id &&
       aboutValid
     );
-    // this.setState({
-    //   formValid:
-    //     nameValid &&
-    //     emailValid &&
-    //     phoneValid &&
-    //     country_id &&
-    //     state_id &&
-    //     city_id
-    // });
   };
   handleUserInput = e => {
     const name = e.target.name;
@@ -155,7 +147,7 @@ class Form extends Component {
       this.validateField(name, value);
     });
   };
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     if (this.validateForm()) {
       let {
@@ -170,7 +162,7 @@ class Form extends Component {
       } = this.state;
       address = address === "" ? null : address;
       about_me = about_me === "" ? null : about_me;
-      fetch("http://localhost:3000/users", {
+      await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -187,7 +179,6 @@ class Form extends Component {
           city_id
         })
       });
-      this.getUsers();
       this.setState({
         requestSent: true,
         successClass: "form-text success",
@@ -200,6 +191,7 @@ class Form extends Component {
         address: "",
         about_me: ""
       });
+      this.getUsers();
     } else {
       alert("An error occured!");
     }
