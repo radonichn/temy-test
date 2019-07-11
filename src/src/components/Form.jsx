@@ -105,12 +105,12 @@ class Form extends Component {
       <div className="wrapper">
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Email name</label>
+            <label htmlFor="name">Enter name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control required"
               id="name"
-              placeholder="Enter name"
+              placeholder="John doe"
               name="name"
               value={this.state.name}
               onChange={this.handleUserInput}
@@ -122,7 +122,7 @@ class Form extends Component {
               type="email"
               className="form-control"
               id="email"
-              placeholder="Enter email"
+              placeholder="johndoe@gmail.com"
               name="email"
               value={this.state.email}
               onChange={this.handleUserInput}
@@ -183,7 +183,7 @@ class Form extends Component {
               type="number"
               className="form-control"
               id="phone"
-              placeholder="Enter phone"
+              placeholder="0506427852"
               name="phone_number"
               value={this.state.phone_number}
               onChange={this.handleUserInput}
@@ -195,7 +195,7 @@ class Form extends Component {
               type="text"
               className="form-control"
               id="address"
-              placeholder="Enter address"
+              placeholder="Some street 3"
               name="address"
               value={this.state.address}
               onChange={this.handleUserInput}
@@ -206,7 +206,7 @@ class Form extends Component {
             <textarea
               id="about"
               name="about_me"
-              placeholder="About me"
+              placeholder="About me..."
               value={this.state.about_me}
               onChange={this.handleUserInput}
             />
