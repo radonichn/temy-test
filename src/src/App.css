@@ -13,7 +13,13 @@
 small.danger {
   color: red;
 }
+small.hidden {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
 small.success {
+  opacity: 1;
+  transition: opacity 0.3s ease;
   color: green;
 }
 .form textarea {

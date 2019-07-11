@@ -22,7 +22,8 @@ class Form extends Component {
     aboutValid: true,
     formValid: false,
     fieldErrors: {},
-    requestSent: false
+    requestSent: false,
+    successClass: "form-text hidden"
   };
   getUsers = async () => {
     const users = await fetch("http://localhost:3000/users").then(res =>
@@ -189,6 +190,7 @@ class Form extends Component {
       this.getUsers();
       this.setState({
         requestSent: true,
+        successClass: "form-text success",
         name: "",
         email: "",
         phone_number: "",
@@ -212,8 +214,8 @@ class Form extends Component {
   componentDidUpdate = () => {
     if (this.state.requestSent) {
       setTimeout(() => {
-        this.setState({ requestSent: false });
-      }, 1000);
+        this.setState({ requestSent: false, successClass: "form-text hidden" });
+      }, 2000);
     }
   };
   render() {
@@ -382,11 +384,9 @@ class Form extends Component {
           >
             Submit
           </button>
-          {this.state.requestSent && (
-            <small className="form-text success">
-              Message was successfully sent
-            </small>
-          )}
+          <small className={this.state.successClass}>
+            Message was successfully sent
+          </small>
         </form>
         <div className="users">
           {this.state.users.map(user => (
